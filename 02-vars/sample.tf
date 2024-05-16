@@ -44,3 +44,13 @@ variable "sample_map" {
 output "sample_map_op" {
     value = "Welcome to ${var.sample_map["mode"]} - ${var.sample_map["training"]} and the batch timings are ${var.sample_map["timing"]}"
 }
+
+variable "city" {}
+
+output "city_name_op" {
+    value = "var.city"
+}
+
+output "city_name_op" {
+    value = "The name of the city is ${var.city}"
+}
