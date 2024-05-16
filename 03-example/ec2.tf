@@ -7,7 +7,7 @@ resource "aws_instance" "web" {
     instance_type   = "t3.micro"
 
     tags = {
-      name = "Terraform-Instance"
+      name = "Terraform-Instance-Server"
     }
 }
 
