@@ -5,7 +5,7 @@ resource "aws_instance" "web" {
     vpc_security_group_ids = [aws_security_group.allow_ssh_sg.id]
 
     tags = {
-      name = "Terraform-Instance-Server"
+      name = "web"
     }
 }
 
