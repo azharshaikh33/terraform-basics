@@ -10,12 +10,12 @@ output "sample_out put" {
     value = " Value of a sample variable is ${var.sample}"
 }
 
-variable "number" {
+variable "integer" {
     default = 1000
 }
 
 output "number" {
-    value = "var.number"
+    value = "var.integer"
 }
 
 variable "sample_list" {
@@ -23,6 +23,12 @@ variable "sample_list" {
         "terraform",
         "Cloud Formation",
         "Pulumi",
-        "Ansible"
+        "Ansible",
+        120,
+        true
     ]
+}
+
+output "sample_list_op" {
+    value = "Welcome to ${var.sample_list[0]} Training and duration of the training is ${var.sample_list[4]} hours"
 }
