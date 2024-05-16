@@ -32,3 +32,15 @@ variable "sample_list" {
 output "sample_list_op" {
     value = "Welcome to ${var.sample_list[0]} Training and duration of the training is ${var.sample_list[4]} hours"
 }
+
+variable "sample_map" {
+    default = {
+        mode = "online",
+        training = "DevOps",
+        timing = "0730_AM_IST"
+    }
+}
+
+output "sample_map_op" {
+    Value = "Welcome to ${var.sample_map["mode"]}" - ${var.sample_map["training"]}" and the batch timings are ${var.sample_map["timings"]}"
+}
