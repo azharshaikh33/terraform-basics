@@ -1,7 +1,10 @@
+# Providers details
 provider "aws" {
   region = "us-east-1"
 }
 
+
+# create ec2 instance
 resource "aws_instance" "web" {
     ami = "ami-072983368f2a6eab5"
     instance_type = "t3.micro"
@@ -16,25 +19,28 @@ output "private_dns_of_server" {
   
 }
 
-resource "aws_security_group" "allow_SSH" {
-  name        = "allow_SSH"
-  description = "Allow SSH inbound traffic and all outbound traffic"
+# Create a security group
+resource "aws_security_group" "allow_ssh_sg" {
+  name        = "b53_allow_ssh_sg"
+  description = "Allow SSH traffic"
+
+  # Inbound rules
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Outbound rules
+  egress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   tags = {
-    Name = "allow_SSH"
+    Name = "b53_allow_ssh_sg"
   }
-}
-
-resource "aws_vpc_security_group_ingress_rule" "allow_SSH_ipv4" {
-  security_group_id = aws_security_group.allow_SSH.id
-  cidr_ipv4         = ["0.0.0.0/0"]
-  from_port         = 22
-  ip_protocol       = "tcp"
-  to_port           = 22
-}
-
-resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
-  security_group_id = aws_security_group.allow_ssh.id
-  cidr_ipv4         = "0.0.0.0/0"
-  ip_protocol       = "-1" # semantically equivalent to all ports
 }
