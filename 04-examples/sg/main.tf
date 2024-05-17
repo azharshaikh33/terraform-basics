@@ -1,6 +1,6 @@
 # Create a security group
 resource "aws_security_group" "allow_ssh_sg" {
-  name        = "b53_allow_ssh_sg"
+  name        = "test_allow_ssh_sg"
   description = "Allow SSH traffic"
 
   # Inbound rules
