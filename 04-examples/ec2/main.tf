@@ -1,6 +1,6 @@
 # create ec2 instance
 resource "aws_instance" "web" {
-    ami = "ami-072983368f2a6eab5"
+    ami = data.aws_ami.my_ami.image_id
     instance_type = "t3.micro"
     vpc_security_group_ids = [var.sg]
 
